@@ -488,9 +488,11 @@
             if (action.action === 'openResume') {
                 const resumeTemplate = document.getElementById('resume-template');
                 const resumeHTML = resumeTemplate.innerHTML;
-                const resumeBlob = new Blob([resumeHTML], { type: 'text/html' });
-                const resumeUrl = URL.createObjectURL(resumeBlob);
-                window.open(resumeUrl, '_blank');
+                const newWindow = window.open('', '_blank');
+                if (newWindow) {
+                    newWindow.document.write(resumeHTML);
+                    newWindow.document.close();
+                }
             }
             if (action.action === 'link') {
                 window.open(action.url, '_blank');
