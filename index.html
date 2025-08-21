@@ -14,7 +14,7 @@
             --blue-accent: #0ea5e9;
             --orange-accent: #f97316;
             --white: #FFFFFF;
-            --light-bg: #f3f4f6;
+            --professional-bg: #F9FAFB; /* Refined background color */
         }
 
         html, body {
@@ -24,7 +24,7 @@
         }
 
         body {
-            background-color: var(--light-bg);
+            background-color: var(--professional-bg);
             font-family: 'Raleway', sans-serif;
             display: flex;
             align-items: center;
@@ -196,8 +196,8 @@
         <div class="chat-header">
             <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg>
             <div class="info">
-                <h3>Assistente de Carreira</h3>
-                <p>Online</p>
+                <h3>Jonas Galembeck</h3>
+                <p>Assistente de Carreira | UX/UI Designer</p>
             </div>
         </div>
         <div class="chat-messages" id="chat-messages">
@@ -214,53 +214,155 @@
         <html lang="pt-BR">
         <head>
             <meta charset="UTF-8">
-            <title>Currículo Otimizado - Jonas Galembeck</title>
+            <title>Currículo - Jonas Galembeck</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdn.tailwindcss.com"></script>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
-            <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js" defer></script>
             <style>
-                body{background-color:#f3f4f6;font-family:'Raleway',sans-serif;margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.pagina-a4{width:210mm;height:297mm;background-color:white;box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);overflow:hidden;display:flex;margin-bottom:20px}.download-section{width:100%;max-width:210mm;background-color:white;padding:20px;border-radius:8px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);margin-bottom:20px;box-sizing:border-box}.download-title{font-size:1.25rem;font-weight:700;color:#1F2937;text-align:center;margin-bottom:1rem}.download-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.download-column h3{text-align:center;font-weight:600;color:#1F2937;margin-bottom:.75rem}.button-group{display:flex;flex-direction:column;gap:.5rem}.download-button{color:white;padding:12px;border-radius:8px;font-weight:700;cursor:pointer;border:none;font-family:'Raleway',sans-serif;font-size:14px;transition:opacity .3s;text-align:center}.download-button:hover{opacity:.9}.pdf{background-color:#1F2937}.jpg{background-color:#f97316}.docx{background-color:#0ea5e9}.html{background-color:#10b981}.coluna-esquerda{width:35%;background-color:#1F2937;color:white;padding:32px;box-sizing:border-box;display:flex;flex-direction:column}.cabecalho-esquerda{text-align:center}.logo{width:75px;height:75px}.nome{font-family:'Raleway',sans-serif;font-size:1.7rem;font-weight:900;margin-top:1rem;line-height:1.1}.titulo{font-family:'Raleway',sans-serif;font-size:.85rem;font-weight:400;color:#d1d5db;margin-top:.5rem;line-height:1.3}.titulo-destaque{font-weight:700;color:#f97316}.info-esquerda{margin-top:2.5rem;font-size:11.5px;line-height:1.6}.info-esquerda h3{font-family:'Raleway',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#0ea5e9;margin-bottom:.5rem;margin-top:1.5rem}.info-esquerda p{margin:.25rem 0}.info-esquerda a{color:white;text-decoration:none}.subtexto-competencias{font-size:10.5px;color:#9ca3af;margin-top:-.5rem;margin-bottom:.75rem}.subtexto-idioma{font-style:italic;color:#9ca3af}.coluna-direita{width:65%;padding:32px;box-sizing:border-box;font-family:'Raleway',sans-serif;color:#374151}.coluna-direita h2{font-weight:900;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:#1F2937;border-bottom:2px solid #0ea5e9;padding-bottom:.25rem;margin-bottom:1rem;margin-top:1.5rem}.coluna-direita h2:first-of-type{margin-top:0}.resumo-pessoal{font-size:12.8px;line-height:1.55}.experiencia-item{font-size:12.8px;margin-bottom:.95rem}.experiencia-item p:first-of-type{margin:0}.cargo{font-weight:700;color:#1F2937}.empresa-data{font-size:11px;color:#6b7280;margin-top:2px}.lista-experiencia{margin-top:.5rem;padding-left:20px;line-height:1.55}.formacao-item{font-size:12.8px;margin-bottom:.75rem}.formacao-item p{margin:0}.curso{font-weight:700;color:#1F2937}.instituicao{font-size:11px;color:#6b7280;margin-top:2px}.lista-projetos{margin-top:.5rem;padding-left:20px;line-height:1.55;font-size:12.8px}.lista-projetos li{margin-bottom:.25rem}#resume-en .resumo-pessoal{line-height:1.6}#resume-en .experiencia-item{margin-bottom:1.2rem}#resume-en .coluna-direita h2{margin-top:1.7rem}#resume-en .coluna-direita h2:first-of-type{margin-top:0}
+                body { font-family: 'Raleway', sans-serif; }
+                .resume-container { display: none; }
+                .resume-container.active { display: block; }
+                .lang-button.active { background-color: #1F2937; color: white; }
             </style>
         </head>
-        <body>
-            <div class="download-section">
-                <h2 class="download-title">Opções de Download</h2>
-                <div class="download-grid">
-                    <div class="download-column">
-                        <h3>Português</h3>
-                        <div class="button-group">
-                            <button class="download-button pdf" onclick="generateFile('pdf', 'pt')">Baixar PDF</button>
-                            <button class="download-button jpg" onclick="generateFile('jpg', 'pt')">Baixar JPG</button>
-                            <button class="download-button docx" onclick="generateFile('docx', 'pt')">Baixar DOCX</button>
-                            <button class="download-button html" onclick="generateFile('html', 'pt')">Baixar HTML</button>
+        <body class="bg-gray-100">
+
+            <div class="max-w-4xl mx-auto my-8 p-4">
+                
+                <!-- Controls: Language and Download -->
+                <div class="bg-white p-4 rounded-lg shadow-md mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-gray-700">Idioma:</span>
+                        <div class="flex rounded-lg border border-gray-200">
+                            <button id="btn-pt" class="lang-button active px-4 py-2 rounded-l-lg text-sm font-bold transition-colors" onclick="switchLanguage('pt')">Português</button>
+                            <button id="btn-en" class="lang-button px-4 py-2 rounded-r-lg text-sm font-bold transition-colors" onclick="switchLanguage('en')">English</button>
                         </div>
                     </div>
-                    <div class="download-column">
-                        <h3>English</h3>
-                        <div class="button-group">
-                            <button class="download-button pdf" onclick="generateFile('pdf', 'en')">Download PDF</button>
-                            <button class="download-button jpg" onclick="generateFile('jpg', 'en')">Download JPG</button>
-                            <button class="download-button docx" onclick="generateFile('docx', 'en')">Download DOCX</button>
-                            <button class="download-button html" onclick="generateFile('html', 'en')">Download HTML</button>
+                    <div class="flex items-center gap-4">
+                        <button class="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2" onclick="generateFile('pt')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                            Baixar PDF (PT)
+                        </button>
+                         <button class="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2" onclick="generateFile('en')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                            Download PDF (EN)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Portuguese Resume -->
+                <div id="resume-pt" class="resume-container active bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gray-800 text-white p-8">
+                            <div class="text-center mb-8">
+                                <svg class="w-24 h-24 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg>
+                                <h1 class="text-2xl font-black mt-4">JONAS GALEMBECK</h1>
+                                <p class="text-sm text-gray-300 mt-1"><span class="font-bold text-orange-500">UX/UI</span> DESIGNER EM FORMAÇÃO | GOOGLE UX DESIGN CERTIFICATE</p>
+                            </div>
+                            <div class="text-sm space-y-6">
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Contato</h3><p>jonasgalembeck@gmail.com</p><p>(41) 99986-2248</p><p>Curitiba, Brasil</p><p>linkedin.com/in/jonasgalembeck</p></div>
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Competências Técnicas</h3><p class="text-xs text-gray-400 italic mb-2">(Em desenvolvimento no Google UX Certificate)</p><ul class="space-y-1"><li>• Figma & Prototipagem</li><li>• Wireframing & UI Design</li><li>• UX Research & Usabilidade</li><li>• Design Thinking</li><li>• Arquitetura da Informação</li></ul></div>
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Competências Interpessoais</h3><ul class="space-y-1"><li>• Empatia & Colaboração</li><li>• Pensamento Analítico</li><li>• Comunicação Intercultural</li><li>• Resolução de Problemas</li></ul></div>
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Idiomas</h3><p><strong>Português:</strong> Nativo</p><p><strong>Inglês:</strong> Avançado <em class="text-gray-400 block">(4 anos na Irlanda)</em></p><p><strong>Italiano:</strong> Básico <em class="text-gray-400 block">(Imersão de 2 meses na Itália)</em></p></div>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <div class="space-y-8 text-gray-700 text-sm">
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Resumo Pessoal</h2><p class="leading-relaxed">Designer recém-formado e aluno do Google UX Design Certificate, direcionando +9 anos de experiência em análise digital e comunicação para a área de UX/UI. Com vivência internacional e inglês avançado, aplico maturidade e pensamento analítico para desenvolver soluções digitais centradas no usuário. Busco oportunidades de <strong>trainee ou júnior</strong> para aplicar minhas habilidades em wireframing, prototipagem e UX research.</p></div>
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Experiência Profissional</h2><div class="space-y-6"><div class="leading-relaxed"><p class="font-bold text-gray-800">Moderador Bilíngue de Conteúdo e Anúncios (Freelance)</p><p class="text-xs text-gray-500">Projetos para Google e Meta (via Appen & Lionbridge) | Fev 2016 – Presente</p><ul class="list-disc list-inside mt-2 space-y-1"><li><strong>Analisei</strong> mais de 10.000 anúncios e landing pages, aplicando diretrizes de usabilidade para otimizar a clareza e a relevância da jornada do usuário.</li><li><strong>Identifiquei</strong> pontos de fricção e violações de políticas em interfaces digitais, garantindo uma User Experience segura e alinhada aos padrões de qualidade.</li></ul></div><div class="leading-relaxed"><p class="font-bold text-gray-800">Gestão de Conteúdo e Experiência Digital (MEI)</p><p class="text-xs text-gray-500">Maria Bela Esmalteria | Nov 2023 – Dez 2024</p><ul class="list-disc list-inside mt-2 space-y-1"><li><strong>Idealizei e executei</strong> o projeto de branding do zero, definindo a identidade visual e o tom de voz para criar uma marca coesa e atrativa.</li><li><strong>Lancei e gerenciei</strong> o perfil no Instagram, desenvolvendo uma estratégia de conteúdo focada na experiência do seguidor que resultou em um <strong>aumento de 45% no engajamento</strong>.</li></ul></div><div class="leading-relaxed"><p class="font-bold text-gray-800">Organização de Sistemas e Jornada do Cliente</p><p class="text-xs text-gray-500">Abercrombie & Fitch (Dublin, Irlanda) | Nov 2012 – Ago 2015</p><ul class="list-disc list-inside mt-2 space-y-1"><li><strong>Estruturei</strong> o layout da loja aplicando princípios de arquitetura da informação e hierarquia visual para otimizar a jornada do cliente e o fluxo de navegação.</li></ul></div></div></div>
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Formação</h2><div class="space-y-4"><div class="leading-relaxed"><p class="font-bold text-gray-800">Google UX Design Professional Certificate</p><p class="text-xs text-gray-500">Coursera | Em andamento</p></div><div class="leading-relaxed"><p class="font-bold text-gray-800">Bacharelado em Design</p><p class="text-xs text-gray-500">UTFPR – Universidade Tecnológica Federal do Paraná | Concluído: 2025</p></div></div></div>
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Projetos Relevantes</h2><ul class="list-disc list-inside space-y-2 leading-relaxed"><li><strong>Projeto de Graduação (UTFPR):</strong> A Evolução do Design de UX/UI em Sistemas de Inteligência Artificial.</li><li><strong>Projeto NAILA IoT:</strong> Desenvolvimento de um chatbot acadêmico, focando em arquitetura da informação e fluxos de conversação para uma experiência intuitiva.</li><li><strong>Google UX Certificate:</strong> Criação de wireframes, protótipos de baixa e alta fidelidade, e condução de pesquisas com usuários para projetos mobile e web.</li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Resume -->
+                <div id="resume-en" class="resume-container bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gray-800 text-white p-8">
+                            <div class="text-center mb-8">
+                                <svg class="w-24 h-24 mx-auto" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg>
+                                <h1 class="text-2xl font-black mt-4">JONAS GALEMBECK</h1>
+                                <p class="text-sm text-gray-300 mt-1">ASPIRING <span class="font-bold text-orange-500">UX/UI</span> DESIGNER | GOOGLE UX DESIGN CERTIFICATE</p>
+                            </div>
+                            <div class="text-sm space-y-6">
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Contact</h3><p>jonasgalembeck@gmail.com</p><p>(+55 41) 99986-2248</p><p>Curitiba, Brazil</p><p>linkedin.com/in/jonasgalembeck</p></div>
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Technical Skills</h3><p class="text-xs text-gray-400 italic mb-2">(In development via Google UX Certificate)</p><ul class="space-y-1"><li>• Figma & Prototyping</li><li>• Wireframing & UI Design</li><li>• UX Research & Usability</li><li>• Design Thinking</li><li>• Information Architecture</li></ul></div>
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Soft Skills</h3><ul class="space-y-1"><li>• Empathy & Collaboration</li><li>• Analytical Thinking</li><li>• Intercultural Communication</li><li>• Problem-Solving</li></ul></div>
+                                <div><h3 class="font-bold text-sky-500 uppercase tracking-wider mb-2">Languages</h3><p><strong>Portuguese:</strong> Native</p><p><strong>English:</strong> Advanced <em class="text-gray-400 block">(4 years in Ireland)</em></p><p><strong>Italian:</strong> Basic <em class="text-gray-400 block">(2-month immersion in Italy)</em></p></div>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-8">
+                            <div class="space-y-8 text-gray-700 text-sm">
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Personal Summary</h2><p class="leading-relaxed">Recent Design graduate and a student of the Google UX Design Certificate, leveraging +9 years of experience in digital analysis and communication to transition into UX/UI. With international experience and advanced English, I apply maturity and analytical thinking to develop user-centered digital solutions. Seeking a <strong>trainee or junior role</strong> to apply my skills in wireframing, prototyping, and UX research.</p></div>
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Professional Experience</h2><div class="space-y-6"><div class="leading-relaxed"><p class="font-bold text-gray-800">Bilingual Content & Ads Moderator (Freelance)</p><p class="text-xs text-gray-500">Projects for Google & Meta (via Appen & Lionbridge) | Feb 2016 – Present</p><ul class="list-disc list-inside mt-2 space-y-1"><li><strong>Analyzed</strong> over 10,000 ads and landing pages, applying usability guidelines to optimize the clarity and relevance of the user journey.</li><li><strong>Identified</strong> friction points and policy violations in digital interfaces, ensuring a safe and high-quality User Experience.</li></ul></div><div class="leading-relaxed"><p class="font-bold text-gray-800">Content & Digital Experience Management</p><p class="text-xs text-gray-500">Maria Bela Esmalteria | Nov 2023 – Dez 2024</p><ul class="list-disc list-inside mt-2 space-y-1"><li><strong>Conceptualized and executed</strong> the branding project from scratch, defining the visual identity and tone of voice to create a cohesive and attractive brand.</li><li><strong>Launched and managed</strong> the Instagram profile, developing a follower-centric content strategy that resulted in a <strong>45% increase in engagement</strong>.</li></ul></div><div class="leading-relaxed"><p class="font-bold text-gray-800">Systems Organization & Customer Journey</p><p class="text-xs text-gray-500">Abercrombie & Fitch (Dublin, Ireland) | Nov 2012 – Aug 2015</p><ul class="list-disc list-inside mt-2 space-y-1"><li><strong>Structured</strong> the store layout by applying information architecture and visual hierarchy principles to optimize the customer journey and navigation flow.</li></ul></div></div></div>
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Education</h2><div class="space-y-4"><div class="leading-relaxed"><p class="font-bold text-gray-800">Google UX Design Professional Certificate</p><p class="text-xs text-gray-500">Coursera | In Progress</p></div><div class="leading-relaxed"><p class="font-bold text-gray-800">Bachelor's Degree in Design</p><p class="text-xs text-gray-500">UTFPR – Federal University of Technology – Paraná | Completed: 2025</p></div></div></div>
+                                <div><h2 class="text-base font-black uppercase tracking-widest text-gray-800 border-b-2 border-sky-500 pb-1 mb-4">Relevant Projects</h2><ul class="list-disc list-inside space-y-2 leading-relaxed"><li><strong>Graduation Project (UTFPR):</strong> The Evolution of UX/UI Design in Artificial Intelligence Systems.</li><li><strong>Project NAILA IoT:</strong> Developed an academic chatbot, focusing on information architecture and conversational flows for an intuitive experience.</li><li><strong>Google UX Certificate:</strong> Created wireframes, low and high-fidelity prototypes, and conducted user research for mobile and web projects.</li></ul></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="resume-pt" class="pagina-a4">
-                <div class="coluna-esquerda"><div class="cabecalho-esquerda"><svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg><h1 class="nome">JONAS GALEMBECK</h1><p class="titulo"><span class="titulo-destaque">UX/UI</span> DESIGNER EM FORMAÇÃO |<br>GOOGLE UX DESIGN CERTIFICATE</p></div><div class="info-esquerda"><h3>Contato</h3><p>jonasgalembeck@gmail.com</p><p>(41) 99986-2248</p><p>Curitiba, Brasil</p><p><a href="https://www.linkedin.com/in/jonasgalembeck">linkedin.com/in/jonasgalembeck</a></p><h3>Competências Técnicas</h3><p class="subtexto-competencias">(Em desenvolvimento no Google UX Certificate)</p><p>• Figma & Prototipagem</p><p>• Wireframing & UI Design</p><p>• UX Research & Usabilidade</p><p>• Design Thinking</p><p>• Arquitetura da Informação</p><h3>Competências Interpessoais</h3><p>• Empatia & Colaboração</p><p>• Pensamento Analítico</p><p>• Comunicação Intercultural</p><p>• Resolução de Problemas</p><h3>Idiomas</h3><p><strong>Português:</strong> Nativo</p><p><strong>Inglês:</strong> Avançado <br><em class="subtexto-idioma">(4 anos na Irlanda)</em></p><p><strong>Italiano:</strong> Básico <br><em class="subtexto-idioma">(Imersão de 2 meses na Itália)</em></p></div></div>
-                <div class="coluna-direita"><h2>Resumo Pessoal</h2><p class="resumo-pessoal">Designer recém-formado e aluno do Google UX Design Certificate, direcionando +9 anos de experiência em análise digital e comunicação para a área de UX/UI. Com vivência internacional e inglês avançado, aplico maturidade e pensamento analítico para desenvolver soluções digitais centradas no usuário. Busco oportunidades de <strong>trainee ou júnior</strong> para aplicar minhas habilidades em wireframing, prototipagem e UX research.</p><h2>Experiência Profissional</h2><div class="experiencia-item"><p class="cargo">Moderador Bilíngue de Conteúdo e Anúncios (Freelance)</p><p class="empresa-data">Projetos para Google e Meta (via Appen & Lionbridge) | Fev 2016 – Presente</p><ul class="lista-experiencia"><li><strong>Analisei</strong> mais de 10.000 anúncios e landing pages, aplicando diretrizes de usabilidade para otimizar a clareza e a relevância da jornada do usuário.</li><li><strong>Identifiquei</strong> pontos de fricção e violações de políticas em interfaces digitais, garantindo uma User Experience segura e alinhada aos padrões de qualidade.</li></ul></div><div class="experiencia-item"><p class="cargo">Gestão de Conteúdo e Experiência Digital (MEI)</p><p class="empresa-data">Maria Bela Esmalteria | Nov 2023 – Dez 2024</p><ul class="lista-experiencia"><li><strong>Idealizei e executei</strong> o projeto de branding do zero, definindo a identidade visual e o tom de voz para criar uma marca coesa e atrativa.</li><li><strong>Lancei e gerenciei</strong> o perfil no Instagram, desenvolvendo uma estratégia de conteúdo focada na experiência do seguidor que resultou em um <strong>aumento de 45% no engajamento</strong>.</li></ul></div><div class="experiencia-item"><p class="cargo">Organização de Sistemas e Jornada do Cliente</p><p class="empresa-data">Abercrombie & Fitch (Dublin, Irlanda) | Nov 2012 – Ago 2015</p><ul class="lista-experiencia"><li><strong>Estruturei</strong> o layout da loja aplicando princípios de arquitetura da informação e hierarquia visual para otimizar a jornada do cliente e o fluxo de navegação.</li></ul></div><h2>Formação</h2><div class="formacao-item"><p class="curso">Google UX Design Professional Certificate</p><p class="instituicao">Coursera | Em andamento</p></div><div class="formacao-item"><p class="curso">Bacharelado em Design</p><p class="instituicao">UTFPR – Universidade Tecnológica Federal do Paraná | Concluído: 2025</p></div><h2>Projetos Relevantes</h2><ul class="lista-projetos"><li><strong>Projeto de Graduação (UTFPR):</strong> A Evolução do Design de UX/UI em Sistemas de Inteligência Artificial.</li><li><strong>Projeto NAILA IoT:</strong> Desenvolvimento de um chatbot acadêmico, focando em arquitetura da informação e fluxos de conversação para uma experiência intuitiva.</li><li><strong>Google UX Certificate:</strong> Criação de wireframes, protótipos de baixa e alta fidelidade, e condução de pesquisas com usuários para projetos mobile e web.</li></ul></div>
-            </div>
-            <div id="resume-en" class="pagina-a4" style="display:none">
-                <div class="coluna-esquerda"><div class="cabecalho-esquerda"><svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg><h1 class="nome">JONAS GALEMBECK</h1><p class="titulo">ASPIRING <span class="titulo-destaque">UX/UI</span> DESIGNER |<br>GOOGLE UX DESIGN CERTIFICATE</p></div><div class="info-esquerda"><h3>Contact</h3><p>(+55 41) 99986-2248</p><p>jonasgalembeck@gmail.com</p><p>Curitiba, Brazil</p><p><a href="https://www.linkedin.com/in/jonasgalembeck">linkedin.com/in/jonasgalembeck</a></p><h3>Technical Skills</h3><p class="subtexto-competencias">(In development via Google UX Certificate)</p><p>• Figma & Prototyping</p><p>• Wireframing & UI Design</p><p>• UX Research & Usability</p><p>• Design Thinking</p><p>• Information Architecture</p><h3>Soft Skills</h3><p>• Empathy & Collaboration</p><p>• Analytical Thinking</p><p>• Intercultural Communication</p><p>• Problem-Solving</p><h3>Languages</h3><p><strong>Portuguese:</strong> Native</p><p><strong>English:</strong> Advanced <br><em class="subtexto-idioma">(4 years in Ireland)</em></p><p><strong>Italian:</strong> Basic <br><em class="subtexto-idioma">(2-month immersion in Italy)</em></p></div></div>
-                <div class="coluna-direita"><h2>Personal Summary</h2><p class="resumo-pessoal">Recent Design graduate and a student of the Google UX Design Certificate, leveraging +9 years of experience in digital analysis and communication to transition into UX/UI. With international experience and advanced English, I apply maturity and analytical thinking to develop user-centered digital solutions. Seeking a <strong>trainee or junior role</strong> to apply my skills in wireframing, prototyping, and UX research.</p><h2>Professional Experience</h2><div class="experiencia-item"><p class="cargo">Bilingual Content & Ads Moderator (Freelance)</p><p class="empresa-data">Projects for Google & Meta (via Appen & Lionbridge) | Feb 2016 – Present</p><ul class="lista-experiencia"><li><strong>Analyzed</strong> over 10,000 ads and landing pages, applying usability guidelines to optimize the clarity and relevance of the user journey.</li><li><strong>Identified</strong> friction points and policy violations in digital interfaces, ensuring a safe and high-quality User Experience.</li></ul></div><div class="experiencia-item"><p class="cargo">Content & Digital Experience Management</p><p class="empresa-data">Maria Bela Esmalteria | Nov 2023 – Dez 2024</p><ul class="lista-experiencia"><li><strong>Conceptualized and executed</strong> the branding project from scratch, defining the visual identity and tone of voice to create a cohesive and attractive brand.</li><li><strong>Launched and managed</strong> the Instagram profile, developing a follower-centric content strategy that resulted in a <strong>45% increase in engagement</strong>.</li></ul></div><div class="experiencia-item"><p class="cargo">Systems Organization & Customer Journey</p><p class="empresa-data">Abercrombie & Fitch (Dublin, Ireland) | Nov 2012 – Aug 2015</p><ul class="lista-experiencia"><li><strong>Structured</strong> the store layout by applying information architecture and visual hierarchy principles to optimize the customer journey and navigation flow.</li></ul></div><h2>Education</h2><div class="formacao-item"><p class="curso">Google UX Design Professional Certificate</p><p class="instituicao">Coursera | In Progress</p></div><div class="formacao-item"><p class="curso">Bachelor's Degree in Design</p><p class="instituicao">UTFPR – Federal University of Technology – Paraná | Completed: 2025</p></div><h2>Relevant Projects</h2><ul class="lista-projetos"><li><strong>Graduation Project (UTFPR):</strong> The Evolution of UX/UI Design in Artificial Intelligence Systems.</li><li><strong>Project NAILA IoT:</strong> Developed an academic chatbot, focusing on information architecture and conversational flows for an intuitive experience.</li><li><strong>Google UX Certificate:</strong> Created wireframes, low and high-fidelity prototypes, and conducted user research for mobile and web projects.</li></ul></div>
-            </div>
+
             <script>
-                function createDocxContent(e){const t=document.getElementById(`resume-${e}`),n=t.querySelector(".coluna-esquerda").cloneNode(!0),o=t.querySelector(".coluna-direita").cloneNode(!0),l=n.querySelector(".nome").textContent,a=n.querySelector(".titulo").innerHTML.replace(/<br>/g," | ").replace(/<[^>]+>/g,""),r=Array.from(n.querySelectorAll("h3 + p, h3 + p + p, h3 + p + p + p, h3 + p + p + p + p")).map(e=>e.textContent.trim()).join(" | ");let d=`<div style="font-family: Arial, sans-serif; font-size: 10.5pt; line-height: 1.4;"><div style="text-align: center;"><p style="font-size: 20pt; font-weight: bold; margin: 0;">${l}</p><p style="font-size: 11pt; margin: 0;">${a}</p><p style="font-size: 9pt; margin-top: 8px;">${r}</p></div><br/>`;const c=o.querySelectorAll("h2");return c.forEach(e=>{d+=`<h2 style="font-size: 12pt; font-weight: bold; margin-top: 12px; border-bottom: 1px solid #000; padding-bottom: 2px;">${e.textContent.toUpperCase()}</h2>`;let t=e.nextElementSibling;for(;t&&"H2"!==t.tagName;)d+=t.outerHTML,t=t.nextElementSibling}),d+=`<h2 style="font-size: 12pt; font-weight: bold; margin-top: 12px; border-bottom: 1px solid #000; padding-bottom: 2px;">${"pt"===e?"COMPETÊNCIAS":"SKILLS"}</h2>`;let s=[],i=Array.from(n.querySelectorAll("h3")).find(e=>e.textContent.includes("Técnicas")||e.textContent.includes("Technical")).nextElementSibling;for(;i&&"P"===i.tagName;)i.classList.contains("subtexto-competencias")||s.push(i.textContent.replace("• ","")),i=i.nextElementSibling;d+=`<p><strong>${"pt"===e?"Técnicas":"Technical"}:</strong> ${s.join(", ")}.</p>`;let m=[],p=Array.from(n.querySelectorAll("h3")).find(e=>e.textContent.includes("Interpessoais")||e.textContent.includes("Soft")).nextElementSibling;for(;p&&"P"===p.tagName;)m.push(p.textContent.replace("• ","")),p=p.nextElementSibling;d+=`<p><strong>${"pt"===e?"Interpessoais":"Soft Skills"}:</strong> ${m.join(", ")}.</p>`,d+=`<h2 style="font-size: 12pt; font-weight: bold; margin-top: 12px; border-bottom: 1px solid #000; padding-bottom: 2px;">${"pt"===e?"IDIOMAS":"LANGUAGES"}</h2>`;let u=[],g=Array.from(n.querySelectorAll("h3")).find(e=>e.textContent.includes("Idiomas")||e.textContent.includes("Languages")).nextElementSibling;for(;g&&"P"===g.tagName;)u.push(g.textContent.replace(/(\\r\
-|\\n|\\r)/gm," ").replace(/\\s+/g," ")),g=g.nextElementSibling;return d+=`<p>${u.join(" | ")}</p>`,d+="</div>",d}async function generateFile(e,t){const n=document.getElementById(`resume-${t}`),o=`Curriculo_Jonas_Galembeck_${t.toUpperCase()}`,l=document.createElement("div");if(l.innerHTML='<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 9999; color: white; font-size: 20px;">Gerando arquivo...</div>',document.body.appendChild(l),t){const n=document.getElementById(`resume-${t}`);"pt"===t?(n.style.display="flex",document.getElementById("resume-en").style.display="none"):(n.style.display="flex",document.getElementById("resume-pt").style.display="none")}try{if("pdf"===e){const{jsPDF:e}=window.jspdf,t=new e({orientation:"p",unit:"mm",format:"a4"}),a=await htmlToImage.toPng(n,{quality:1,pixelRatio:4});t.addImage(a,"PNG",0,0,210,297),t.save(`${o}.pdf`)}else if("jpg"===e){const e=await htmlToImage.toJpeg(n,{quality:1,pixelRatio:4}),t=document.createElement("a");t.download=`${o}.jpg`,t.href=e,t.click()}else if("docx"===e){const e=createDocxContent(t),n=`<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>${e}</body></html>`,a=htmlDocx.asBlob(n),r=document.createElement("a");r.href=URL.createObjectURL(a),r.download=`${o}.docx`,document.body.appendChild(r),r.click(),document.body.removeChild(r)}else if("html"===e){const e=document.documentElement.outerHTML,t=new Blob([e],{type:"text/html"}),n=document.createElement("a");n.href=URL.createObjectURL(t),n.download=`Curriculo_Jonas_Galembeck_${t.toUpperCase()}.html`,n.click()}}catch(e){console.error("Error generating file:",e);const t=document.createElement("div");t.innerHTML='<div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); background: #ef4444; color: white; padding: 10px 20px; border-radius: 8px; z-index: 10000;">Ocorreu um erro ao gerar o arquivo.</div>',document.body.appendChild(t),setTimeout(()=>document.body.removeChild(t),3e3)}finally{document.body.removeChild(l)}}
+                function switchLanguage(lang) {
+                    if (lang === 'pt') {
+                        document.getElementById('resume-pt').classList.add('active');
+                        document.getElementById('resume-en').classList.remove('active');
+                        document.getElementById('btn-pt').classList.add('active');
+                        document.getElementById('btn-en').classList.remove('active');
+                    } else {
+                        document.getElementById('resume-en').classList.add('active');
+                        document.getElementById('resume-pt').classList.remove('active');
+                        document.getElementById('btn-en').classList.add('active');
+                        document.getElementById('btn-pt').classList.remove('active');
+                    }
+                }
+
+                async function generateFile(lang) {
+                    const elementId = `resume-${lang}`;
+                    const element = document.getElementById(elementId);
+                    if (!element) {
+                        console.error('Element not found:', elementId);
+                        return;
+                    }
+
+                    // Ensure the element is visible for capture
+                    const wasActive = element.classList.contains('active');
+                    if (!wasActive) {
+                        switchLanguage(lang);
+                        // Wait a bit for the DOM to update
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                    }
+
+                    const filename = `Curriculo_Jonas_Galembeck_${lang.toUpperCase()}`;
+                    
+                    try {
+                        const { jsPDF } = window.jspdf;
+                        const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4', compress: true });
+                        const dataUrl = await htmlToImage.toPng(element, { quality: 1.0, pixelRatio: 3 });
+                        
+                        const imgProps= doc.getImageProperties(dataUrl);
+                        const pdfWidth = doc.internal.pageSize.getWidth();
+                        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+                        doc.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                        doc.save(`${filename}.pdf`);
+                    } catch (error) {
+                        console.error("Error generating PDF:", error);
+                        alert("Ocorreu um erro ao gerar o PDF. Tente novamente.");
+                    } finally {
+                        // Revert visibility if it was changed
+                        if (!wasActive) {
+                            switchLanguage(lang === 'pt' ? 'en' : 'pt');
+                        }
+                    }
+                }
             </script>
         </body>
         </html>
@@ -283,7 +385,7 @@
                     actions: [{ text: 'Interessante...', nextStep: 2 }]
                 },
                 {
-                    text: 'Seu projeto de graduação explora a <strong>evolução do design de UX/UI em sistemas de Inteligência Artificial</strong>, mostrando seu foco em tecnologias emergentes.',
+                    text: 'Seu projeto de graduação explorou a <strong>evolução do design de UX/UI em sistemas de Inteligência Artificial</strong>, mostrando seu foco em tecnologias emergentes.',
                     actions: [{ text: 'Quero saber mais!', nextStep: 3 }]
                 },
                 {
@@ -294,8 +396,10 @@
                     ]
                 },
                 {
-                    text: 'Entendido. Se mudar de ideia, sabe onde encontrar!',
-                    actions: []
+                    text: 'Entendido. Agradeço seu tempo! Que tal nos conectarmos no LinkedIn? Adoraria receber seu feedback sobre esta apresentação por lá. 😉',
+                    actions: [
+                        { text: 'Conectar no LinkedIn', action: 'link', url: 'https://www.linkedin.com/in/jonasgalembeck' }
+                    ]
                 }
             ],
             en: [
@@ -308,7 +412,7 @@
                     actions: [{ text: 'Interesting...', nextStep: 2 }]
                 },
                 {
-                    text: 'His graduation project explores the <strong>evolution of UX/UI design in Artificial Intelligence systems</strong>, showcasing his focus on emerging technologies.',
+                    text: 'His graduation project explored the <strong>evolution of UX/UI design in Artificial Intelligence systems</strong>, showcasing his focus on emerging technologies.',
                     actions: [{ text: 'Tell me more!', nextStep: 3 }]
                 },
                 {
@@ -319,8 +423,10 @@
                     ]
                 },
                 {
-                    text: 'Understood. If you change your mind, you know where to find me!',
-                    actions: []
+                    text: 'Understood. Thanks for your time! How about we connect on LinkedIn? I\'d love to hear your feedback on this presentation there. 😉',
+                    actions: [
+                        { text: 'Connect on LinkedIn', action: 'link', url: 'https://www.linkedin.com/in/jonasgalembeck' }
+                    ]
                 }
             ]
         };
@@ -386,6 +492,9 @@
                 const resumeUrl = URL.createObjectURL(resumeBlob);
                 window.open(resumeUrl, '_blank');
             }
+            if (action.action === 'link') {
+                window.open(action.url, '_blank');
+            }
             if (action.nextStep !== undefined) {
                 currentStep = action.nextStep;
                 renderStep(currentStep);
@@ -434,66 +543,6 @@
 
             chatActions.appendChild(ptButton);
             chatActions.appendChild(enButton);
-        }
-
-        function downloadThumbnail() {
-            const node = document.getElementById('chat-component');
-            const button = document.querySelector('.download-button');
-            
-            const originalMessages = chatMessages.innerHTML;
-            const originalActions = chatActions.innerHTML;
-            
-            // Set to the first message of the PT flow for the thumbnail
-            conversationFlow = conversationFlows.pt;
-            chatMessages.innerHTML = '';
-            chatActions.innerHTML = '';
-            const step = conversationFlow[0];
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message bot';
-            messageDiv.style.opacity = 1;
-            messageDiv.style.transform = 'translateY(0)';
-            messageDiv.innerHTML = `
-                <div class="avatar">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#1F2937"/><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg>
-                </div>
-                <div class="message-bubble">${step.text}</div>
-            `;
-            chatMessages.appendChild(messageDiv);
-            const actionButton = document.createElement('button');
-            actionButton.className = 'action-button';
-            actionButton.textContent = step.actions[0].text;
-            actionButton.style.opacity = 1;
-            actionButton.style.transform = 'translateY(0)';
-            chatActions.appendChild(actionButton);
-
-
-            button.textContent = 'Gerando...';
-            button.disabled = true;
-
-            setTimeout(() => {
-                htmlToImage.toPng(node, { 
-                    canvasWidth: 1200, 
-                    canvasHeight: 627,
-                    pixelRatio: 1 
-                })
-                .then(function (dataUrl) {
-                    const link = document.createElement('a');
-                    link.download = 'Thumbnail-Chat-JonasGalembeck.png';
-                    link.href = dataUrl;
-                    link.click();
-                })
-                .catch(function (error) {
-                    console.error('Oops, something went wrong!', error);
-                    alert('Ocorreu um erro ao gerar a imagem.');
-                })
-                .finally(() => {
-                    chatMessages.innerHTML = originalMessages;
-                    chatActions.innerHTML = originalActions;
-                    button.textContent = 'Baixar Miniatura (PNG)';
-                    button.disabled = false;
-                    showLanguageSelection(); // Go back to the initial state
-                });
-            }, 500);
         }
 
         // Initialize with language selection
