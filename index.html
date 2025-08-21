@@ -332,11 +332,9 @@
                         return;
                     }
 
-                    // Ensure the element is visible for capture
                     const wasActive = element.classList.contains('active');
                     if (!wasActive) {
                         switchLanguage(lang);
-                        // Wait a bit for the DOM to update
                         await new Promise(resolve => setTimeout(resolve, 100));
                     }
 
@@ -357,12 +355,13 @@
                         console.error("Error generating PDF:", error);
                         alert("Ocorreu um erro ao gerar o PDF. Tente novamente.");
                     } finally {
-                        // Revert visibility if it was changed
                         if (!wasActive) {
                             switchLanguage(lang === 'pt' ? 'en' : 'pt');
                         }
                     }
                 }
+                // Initialize the view
+                document.addEventListener('DOMContentLoaded', () => switchLanguage('pt'));
             </script>
         </body>
         </html>
