@@ -119,9 +119,12 @@
             animation: fadeIn 0.5s forwards;
         }
         .message.bot { align-self: flex-start; }
+        .message.user { align-self: flex-end; }
+
         .message .avatar { width: 30px; height: 30px; border-radius: 50%; background-color: var(--dark-bg); flex-shrink: 0; overflow: hidden; }
         .message-bubble { padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; }
         .message.bot .message-bubble { background-color: #E5E7EB; color: var(--dark-bg); border-bottom-left-radius: 4px; }
+        .message.user .message-bubble { background-color: var(--blue-accent); color: var(--white); border-bottom-right-radius: 4px; }
 
         .typing-indicator { display: flex; gap: 4px; padding: 12px 16px; }
         .typing-indicator span { width: 8px; height: 8px; background-color: #9CA3AF; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
@@ -156,6 +159,7 @@
         }
         .action-button:hover { opacity: 0.9; transform: translateY(-2px); }
         .action-button.secondary { background-color: #D1D5DB; color: var(--dark-bg); }
+        .action-button:disabled { background-color: #9CA3AF; cursor: not-allowed; }
         
         .resume-container { display: none; }
         .resume-container.active { display: block; }
@@ -197,11 +201,11 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <!-- This is now a button that will trigger the download function -->
-                    <button id="download-btn" class="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                    <!-- This is now a link styled as a button, with the download attribute -->
+                    <a id="download-link" href="#" download class="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
                         Baixar PDF
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -266,25 +270,33 @@
         let conversationFlow;
         let currentLanguage = 'pt';
 
-        // --- Conversation Data ---
+        // --- Conversation Data (UPDATED) ---
         const conversationFlows = {
             pt: [
-                { text: 'Recrutador, sei que você já viu dezenas de perfis hoje. Que tal uma abordagem diferente?', actions: [{ text: 'Me surpreenda.', nextStep: 1 }] },
-                { text: 'Para iniciar sua carreira em UX, o Jonas está finalizando o <strong>Certificado de UX Design do Google</strong> e é graduado em <strong>Design pela UTFPR</strong>.', actions: [{ text: 'Interessante...', nextStep: 2 }] },
-                { text: 'Seu projeto de graduação explorou a <strong>evolução do design de UX/UI em sistemas de Inteligência Artificial</strong>, mostrando seu foco em tecnologias emergentes.', actions: [{ text: 'Quero saber mais!', nextStep: 3 }] },
-                { text: 'Excelente! O currículo completo tem todos os detalhes sobre esses e outros projetos. Gostaria de vê-lo?', actions: [{ text: 'Ver Currículo Agora', action: 'openResume' }, { text: 'Agora não', nextStep: 4, isSecondary: true }] },
-                { text: 'Entendido. Agradeço seu tempo! Que tal nos conectarmos no LinkedIn? Adoraria receber seu feedback sobre esta apresentação por lá. 😉', actions: [{ text: 'Conectar no LinkedIn', action: 'link', url: 'https://www.linkedin.com/in/jonasgalembeck' }] }
+                { text: 'Olá! Sou o assistente de carreira do Jonas. Sei que seu tempo é valioso, então vamos direto ao ponto. O que mais te interessa?', actions: [{ text: 'Formação e habilidades', nextStep: 1 }, { text: 'Experiência profissional', nextStep: 2 }] },
+                { text: 'Ótima escolha. O Jonas está finalizando o <strong>Certificado de UX Design do Google</strong> e é graduado em <strong>Design pela UTFPR</strong>, com foco em tecnologias emergentes como IA.', actions: [{ text: 'E a experiência dele?', nextStep: 2 }, { text: 'Quero ver o currículo', action: 'openResume' }] },
+                { text: 'Atualmente em <strong>transição de carreira</strong>, o Jonas aproveita seus +9 anos de experiência em análise digital e moderação para gigantes como <strong>Google e Meta</strong>. Ele aplicou diretrizes de usabilidade em milhares de interfaces, o que lhe deu uma base sólida para a área de UX.', actions: [{ text: 'Parece promissor. Próximo passo?', nextStep: 3 }] },
+                { text: 'Excelente! O currículo completo tem todos os detalhes. Você pode visualizar a versão interativa ou baixar o PDF diretamente.', actions: [{ text: 'Ver Currículo Agora', action: 'openResume' }, { text: 'Prefiro não', nextStep: 4, isSecondary: true }] },
+                { text: 'Entendido. Agradeço seu tempo! Que tal se conectar com ele para futuras oportunidades? O perfil profissional está no LinkedIn. E se quiser se conectar de uma forma mais pessoal, este é o Instagram dele. 😉', actions: [ { text: 'Conectar no LinkedIn', action: 'link', url: 'https://www.linkedin.com/in/jonasgalembeck' }, { text: 'Seguir no Instagram', action: 'link', url: 'https://www.instagram.com/jgalembeck/' } ] }
             ],
             en: [
-                { text: 'Recruiter, I know you\'ve seen dozens of profiles today. How about a different approach?', actions: [{ text: 'Surprise me.', nextStep: 1 }] },
-                { text: 'To start his UX career, Jonas is completing the <strong>Google UX Design Certificate</strong> and holds a <strong>Bachelor\'s in Design from UTFPR</strong>.', actions: [{ text: 'Interesting...', nextStep: 2 }] },
-                { text: 'His graduation project explored the <strong>evolution of UX/UI design in Artificial Intelligence systems</strong>, showcasing his focus on emerging technologies.', actions: [{ text: 'Tell me more!', nextStep: 3 }] },
-                { text: 'Excellent! The full resume has all the details on these and other projects. Would you like to see it?', actions: [{ text: 'View Resume Now', action: 'openResume' }, { text: 'Not right now', nextStep: 4, isSecondary: true }] },
-                { text: 'Understood. Thanks for your time! How about we connect on LinkedIn? I\'d love to hear your feedback on this presentation there. 😉', actions: [{ text: 'Connect on LinkedIn', action: 'link', url: 'https://www.linkedin.com/in/jonasgalembeck' }] }
+                { text: 'Hi! I\'m Jonas\'s career assistant. I know your time is valuable, so let\'s get straight to the point. What interests you most?', actions: [{ text: 'Education & Skills', nextStep: 1 }, { text: 'Work Experience', nextStep: 2 }] },
+                { text: 'Great choice. Jonas is finishing the <strong>Google UX Design Certificate</strong> and has a <strong>Bachelor\'s in Design from UTFPR</strong>, focusing on emerging technologies like AI.', actions: [{ text: 'What about his experience?', nextStep: 2 }, { text: 'I want to see the resume', action: 'openResume' }] },
+                { text: 'Currently in a <strong>career transition</strong>, Jonas is leveraging his +9 years of experience in digital analysis and moderation for giants like <strong>Google and Meta</strong>. He has applied usability guidelines to thousands of interfaces, which has given him a solid foundation for the UX field.', actions: [{ text: 'Sounds promising. Next step?', nextStep: 3 }] },
+                { text: 'Excellent! The full resume has all the details. You can view the interactive version or download the PDF directly.', actions: [{ text: 'View Resume Now', action: 'openResume' }, { text: 'Not right now', nextStep: 4, isSecondary: true }] },
+                { text: 'Understood. Thanks for your time! How about connecting with him for future opportunities? His professional profile is on LinkedIn. And if you\'d like to connect on a more personal level, here is his Instagram. 😉', actions: [ { text: 'Connect on LinkedIn', action: 'link', url: 'https://www.linkedin.com/in/jonasgalembeck' }, { text: 'Follow on Instagram', action: 'link', url: 'https://www.instagram.com/jgalembeck/' } ] }
             ]
         };
 
         // --- Chat Functions ---
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
         function showTypingIndicator() {
             const typingMessage = document.createElement('div');
             typingMessage.className = 'message bot typing-indicator-container';
@@ -330,14 +342,27 @@
         }
         
         function handleAction(action) {
-            if (action.action === 'openResume') showResumeView();
-            if (action.action === 'link') window.open(action.url, '_blank');
+            // Disable all buttons to prevent multiple clicks
+            const buttons = chatActions.querySelectorAll('.action-button');
+            buttons.forEach(button => button.disabled = true);
+
+            // Add user's choice to the chat
+            addUserMessage(action.text);
+
+            if (action.action === 'openResume') {
+                // Wait a bit before opening the resume to show the user message
+                setTimeout(showResumeView, 500);
+            }
+            if (action.action === 'link') {
+                window.open(action.url, '_blank');
+                // After opening a link, we might want to end the conversation or offer more options.
+                // For now, we just clear the actions.
+                setTimeout(() => chatActions.innerHTML = '', 500);
+            }
             
             if (action.nextStep !== undefined) {
                 currentStep = action.nextStep;
                 renderStep(currentStep);
-            } else if (action.action !== 'openResume') {
-                 chatActions.innerHTML = '';
             }
         }
 
@@ -360,7 +385,7 @@
                 <div class="avatar">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#1F2937"/><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg>
                 </div>
-                <div class="message-bubble">Olá! / Hello!</div>
+                <div class="message-bubble">Olá! / Hello! Por favor, escolha seu idioma. <br> Please select your language.</div>
             `;
             chatMessages.appendChild(messageDiv);
 
@@ -391,8 +416,7 @@
             document.getElementById('btn-pt').addEventListener('click', () => switchLanguage('pt'));
             document.getElementById('btn-en').addEventListener('click', () => switchLanguage('en'));
             
-            // The download button is now handled by a dedicated function
-            document.getElementById('download-btn').addEventListener('click', handleDownloadClick);
+            // The download link is now handled by switchLanguage
             
             switchLanguage(currentLanguage);
         }
@@ -410,66 +434,30 @@
             const btnEn = document.getElementById('btn-en');
             const resumePt = document.getElementById('resume-pt');
             const resumeEn = document.getElementById('resume-en');
+            const downloadLink = document.getElementById('download-link');
+
+            // This technique forces the browser to download the latest version of the file.
+            // If you update the PDF on GitHub, change the version number here (e.g., to v=1.1)
+            const cacheBuster = '?v=1.1'; 
+
+            // Define the paths to your finished PDF files
+            const pdfPathPt = './Curriculo_Jonas_Galembeck_PT.pdf' + cacheBuster;
+            const pdfPathEn = './Curriculo_Jonas_Galembeck_EN.pdf' + cacheBuster;
 
             if (lang === 'pt') {
                 resumePt.classList.add('active');
                 resumeEn.classList.remove('active');
                 btnPt.classList.add('active');
                 btnEn.classList.remove('active');
+                downloadLink.href = pdfPathPt;
             } else {
                 resumeEn.classList.add('active');
                 resumePt.classList.remove('active');
                 btnEn.classList.add('active');
                 btnPt.classList.remove('active');
+                downloadLink.href = pdfPathEn;
             }
         }
-
-        function handleDownloadClick() {
-            const cacheBuster = '?v=1.0';
-            const filename = currentLanguage === 'pt' ? 'Curriculo_Jonas_Galembeck_PT.pdf' : 'Curriculo_Jonas_Galembeck_EN.pdf';
-            const url = `./${filename}${cacheBuster}`;
-            forceDownload(url, filename);
-        }
-
-        // --- Definitive PDF Download Function ---
-        async function forceDownload(url, filename) {
-            const downloadButton = document.getElementById('download-btn');
-            if (!downloadButton) return;
-
-            const originalButtonContent = downloadButton.innerHTML;
-            downloadButton.disabled = true;
-            downloadButton.innerHTML = 'Baixando...';
-
-            try {
-                // Fetch the PDF data as a blob
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`Erro na rede: ${response.statusText}`);
-                }
-                const blob = await response.blob();
-
-                // Create a temporary link to trigger the download
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = filename;
-
-                // Append to body, click, and remove
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-
-                // Clean up the object URL
-                URL.revokeObjectURL(link.href);
-
-            } catch (error) {
-                console.error('Falha no download:', error);
-                alert('Ocorreu um erro ao baixar o arquivo. Verifique se o arquivo existe no GitHub e tente novamente.');
-            } finally {
-                downloadButton.disabled = false;
-                downloadButton.innerHTML = originalButtonContent;
-            }
-        }
-
 
         // --- Initializer ---
         document.addEventListener('DOMContentLoaded', showLanguageSelection);
