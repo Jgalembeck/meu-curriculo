@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
     <style>
         :root {
             --dark-bg: #1F2937;
@@ -18,38 +17,27 @@
             --light-bg: #f3f4f6;
         }
 
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: var(--light-bg);
             font-family: 'Raleway', sans-serif;
-            margin: 0;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .main-container {
-            width: 100%;
-            max-width: 600px;
-        }
-        
-        .info-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .info-header h1 {
-            font-weight: 700;
-            color: var(--dark-bg);
-            margin-bottom: 10px;
-        }
-
         #chat-component {
             width: 100%;
-            aspect-ratio: 1.91 / 1;
+            max-width: 600px;
+            height: 100%;
+            max-height: 314px; /* 600px * (627/1200) to maintain aspect ratio */
             background-color: var(--white);
             border-radius: 12px;
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
@@ -58,12 +46,24 @@
             overflow: hidden;
         }
 
+        @media (max-width: 640px) {
+            body {
+                padding: 0;
+            }
+            #chat-component {
+                max-height: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
         .chat-header {
             background-color: var(--dark-bg);
             padding: 12px 20px;
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-shrink: 0;
         }
         .chat-header .logo {
             width: 40px;
@@ -149,6 +149,7 @@
             justify-content: flex-end;
             background-color: var(--white);
             flex-wrap: wrap;
+            flex-shrink: 0;
         }
 
         .action-button {
@@ -175,21 +176,6 @@
             color: var(--dark-bg);
         }
 
-        .download-button {
-            background-color: #10b981;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            font-family: 'Raleway', sans-serif;
-            font-size: 16px;
-            transition: opacity 0.3s;
-            margin-top: 20px;
-        }
-        .download-button:hover { opacity: 0.9; }
-
         @keyframes fadeIn {
             to {
                 opacity: 1;
@@ -206,31 +192,22 @@
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="info-header">
-            <h1>Minichat Interativo para LinkedIn</h1>
-            <p>Esta é a versão interativa que você pode hospedar. Use o botão abaixo para baixar a imagem estática (thumbnail) para o seu perfil.</p>
-        </div>
-
-        <div id="chat-component">
-            <div class="chat-header">
-                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg>
-                <div class="info">
-                    <h3>Assistente de Carreira</h3>
-                    <p>Online</p>
-                </div>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-                <!-- Messages will be injected here by JavaScript -->
-            </div>
-            <div class="chat-actions" id="chat-actions">
-                <!-- Action buttons will be injected here -->
+    <div id="chat-component">
+        <div class="chat-header">
+            <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="28" y="75" font-family="Raleway, sans-serif" font-weight="900" font-size="80" fill="#FFFFFF" text-anchor="middle">J</text><text x="72" y="75" font-family="Raleway, sans-serif" font-weight="300" font-size="80" fill="#0ea5e9" text-anchor="middle">G</text></svg>
+            <div class="info">
+                <h3>Assistente de Carreira</h3>
+                <p>Online</p>
             </div>
         </div>
-        
-        <button class="download-button" onclick="downloadThumbnail()">Baixar Miniatura (PNG)</button>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be injected here by JavaScript -->
+        </div>
+        <div class="chat-actions" id="chat-actions">
+            <!-- Action buttons will be injected here -->
+        </div>
     </div>
-
+    
     <!-- TEMPLATE FOR THE FULL RESUME -->
     <template id="resume-template">
         <!DOCTYPE html>
