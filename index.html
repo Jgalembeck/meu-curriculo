@@ -197,11 +197,11 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <!-- The "download" attribute is added here to force download -->
-                    <a id="download-link" href="#" download class="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
+                    <!-- This is now a button that will trigger the download function -->
+                    <button id="download-btn" class="bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
                         Baixar PDF
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -391,7 +391,8 @@
             document.getElementById('btn-pt').addEventListener('click', () => switchLanguage('pt'));
             document.getElementById('btn-en').addEventListener('click', () => switchLanguage('en'));
             
-            // The download link is now handled by switchLanguage
+            // The download button is now handled by a dedicated function
+            document.getElementById('download-btn').addEventListener('click', handleDownloadClick);
             
             switchLanguage(currentLanguage);
         }
@@ -409,31 +410,66 @@
             const btnEn = document.getElementById('btn-en');
             const resumePt = document.getElementById('resume-pt');
             const resumeEn = document.getElementById('resume-en');
-            const downloadLink = document.getElementById('download-link');
-
-            // --- SOLUTION ---
-            // This technique forces the browser to download the latest version of the file.
-            // If you update the PDF on GitHub, change the version number here (e.g., to v=1.1)
-            const cacheBuster = '?v=1.0'; 
-
-            // Define the paths to your finished PDF files
-            const pdfPathPt = './Curriculo_Jonas_Galembeck_PT.pdf' + cacheBuster;
-            const pdfPathEn = './Curriculo_Jonas_Galembeck_EN.pdf' + cacheBuster;
 
             if (lang === 'pt') {
                 resumePt.classList.add('active');
                 resumeEn.classList.remove('active');
                 btnPt.classList.add('active');
                 btnEn.classList.remove('active');
-                downloadLink.href = pdfPathPt;
             } else {
                 resumeEn.classList.add('active');
                 resumePt.classList.remove('active');
                 btnEn.classList.add('active');
                 btnPt.classList.remove('active');
-                downloadLink.href = pdfPathEn;
             }
         }
+
+        function handleDownloadClick() {
+            const cacheBuster = '?v=1.0';
+            const filename = currentLanguage === 'pt' ? 'Curriculo_Jonas_Galembeck_PT.pdf' : 'Curriculo_Jonas_Galembeck_EN.pdf';
+            const url = `./${filename}${cacheBuster}`;
+            forceDownload(url, filename);
+        }
+
+        // --- Definitive PDF Download Function ---
+        async function forceDownload(url, filename) {
+            const downloadButton = document.getElementById('download-btn');
+            if (!downloadButton) return;
+
+            const originalButtonContent = downloadButton.innerHTML;
+            downloadButton.disabled = true;
+            downloadButton.innerHTML = 'Baixando...';
+
+            try {
+                // Fetch the PDF data as a blob
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Erro na rede: ${response.statusText}`);
+                }
+                const blob = await response.blob();
+
+                // Create a temporary link to trigger the download
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = filename;
+
+                // Append to body, click, and remove
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Clean up the object URL
+                URL.revokeObjectURL(link.href);
+
+            } catch (error) {
+                console.error('Falha no download:', error);
+                alert('Ocorreu um erro ao baixar o arquivo. Verifique se o arquivo existe no GitHub e tente novamente.');
+            } finally {
+                downloadButton.disabled = false;
+                downloadButton.innerHTML = originalButtonContent;
+            }
+        }
+
 
         // --- Initializer ---
         document.addEventListener('DOMContentLoaded', showLanguageSelection);
