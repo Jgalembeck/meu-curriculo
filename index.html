@@ -411,9 +411,14 @@
             const resumeEn = document.getElementById('resume-en');
             const downloadLink = document.getElementById('download-link');
 
+            // --- SOLUTION ---
+            // This technique forces the browser to download the latest version of the file.
+            // If you update the PDF on GitHub, change the version number here (e.g., to v=1.1)
+            const cacheBuster = '?v=1.0'; 
+
             // Define the paths to your finished PDF files
-            const pdfPathPt = './Curriculo_Jonas_Galembeck_PT.pdf';
-            const pdfPathEn = './Curriculo_Jonas_Galembeck_EN.pdf';
+            const pdfPathPt = './Curriculo_Jonas_Galembeck_PT.pdf' + cacheBuster;
+            const pdfPathEn = './Curriculo_Jonas_Galembeck_EN.pdf' + cacheBuster;
 
             if (lang === 'pt') {
                 resumePt.classList.add('active');
